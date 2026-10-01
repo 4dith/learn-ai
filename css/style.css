@@ -1,0 +1,514 @@
+/* --------------------
+   Base
+-------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    margin: 0;
+    background: #f1eadb;
+    color: #30291f;
+    font-family: Georgia, "Times New Roman", serif;
+    position: relative;
+}
+
+.intro {
+    position: relative;
+    min-height: 100vh;
+    scroll-snap-align: start;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 80px 40px;
+}
+
+.intro::before {
+    content: "";
+    position: absolute;
+
+    top: 12%;
+    bottom: 12%;
+    left: 8%;
+    right: 8%;
+
+    border-top: 2px solid #30291f;
+    border-bottom: 2px solid #30291f;
+}
+
+.intro h1,
+.intro p {
+    position: relative;
+    z-index: 1;
+}
+
+.intro h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.intro p {
+    margin: 25px 0 0;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Let the timeline visually emerge from the intro */
+.roadmap {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: -12vh auto 0;
+    padding: 60px 40px 100px;
+}
+
+.timeline {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #30291f;
+    transform: translateX(-50%);
+}
+
+
+/* --------------------
+   Stages
+-------------------- */
+
+
+.stage {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 80px 0 120px;
+
+    scroll-snap-align: start;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/* Stage checkpoint */
+
+.stage-marker {
+    position: relative;
+    z-index: 2;
+
+    width: fit-content;
+    margin: 0 auto;
+    padding: 15px 30px;
+
+    background: #f1eadb;
+
+    border: none;
+    border-top: 2px solid #30291f;
+    border-bottom: 2px solid #30291f;
+
+    border-radius: 0;
+    text-align: center;
+}
+
+.stage-number {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+}
+
+.stage-marker h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+
+/* --------------------
+   Learning items
+-------------------- */
+
+.learning-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: 48%;
+    margin: 70px 0;
+}
+
+
+/* Left / right positioning */
+
+.learning-item.left {
+    margin-right: auto;
+}
+
+.learning-item.right {
+    margin-left: auto;
+}
+
+
+/* --------------------
+   Branches
+-------------------- */
+
+.learning-item.left::after,
+.learning-item.right::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+
+    width: 50px;
+    height: 1px;
+
+    background: #252525;
+}
+
+
+/* Left branch connects toward center */
+
+.learning-item.left::after {
+    right: -50px;
+}
+
+
+/* Right branch connects toward center */
+
+.learning-item.right::after {
+    left: -50px;
+}
+
+
+/* --------------------
+   Images
+-------------------- */
+
+.image {
+    width: 130px;
+    height: 130px;
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 3px;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* --------------------
+   Learning text
+-------------------- */
+
+.learning-info {
+    max-width: 280px;
+    padding: 0 25px;
+}
+
+.learning-info a {
+    color: #30291f;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #8f8069;
+}
+
+.learning-info a:hover {
+    border-bottom-color: #30291f;
+}
+
+.learning-info p {
+    margin: 10px 0 0;
+
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+
+/* --------------------
+   Projects
+-------------------- */
+
+.project {
+    position: relative;
+    z-index: 2;
+
+    width: fit-content;
+    max-width: 400px;
+
+    margin: 80px auto 0;
+    padding: 25px 40px;
+
+    background: #f1eadb;
+    border: none;
+    border-top: 1px solid #8f8069;
+    border-bottom: 1px solid #8f8069;
+    border-radius: 0;
+
+    text-align: center;
+}
+
+.project span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.project h2 {
+    margin: 8px 0 0;
+
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+
+/* --------------------
+   Appendix
+-------------------- */
+
+.appendix {
+    position: relative;
+    z-index: 2;
+
+    min-height: 100vh;
+
+    padding: 100px 0;
+
+    scroll-snap-align: start;
+
+    text-align: center;
+}
+
+.appendix h1 {
+    display: inline-block;
+
+    margin: 0 0 80px;
+    padding: 15px 30px;
+
+    background: #f7f3eb;
+    border: 2px solid #30291f;
+    border-radius: 50px;
+
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.appendix-item {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 30px;
+
+    background: #f7f3eb;
+}
+
+.appendix-item h2 {
+    margin: 0 0 10px;
+
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.appendix-item p {
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+.scroll-section {
+    opacity: 0.35;
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.scroll-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer {
+    position: relative;
+    z-index: 2;
+
+    min-height: 100vh;
+    scroll-snap-align: start;
+
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 80px 20px 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: #555;
+}
+
+.credits {
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.credits p {
+    margin: 12px 0;
+}
+
+.credits a {
+    color: inherit;
+}
+
+.credits h2 {
+    margin: 0 0 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 24%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+
+    color: #6b6255;
+
+    animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+@keyframes scroll-pulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(6px);
+    }
+}
+
+@media (max-width: 700px) {
+
+    /* Intro */
+    .intro {
+        min-height: 100vh;
+        padding: 60px 30px;
+    }
+
+    .intro::before {
+        top: 15%;
+        bottom: 15%;
+        left: 5%;
+        right: 5%;
+    }
+
+    .intro h1 {
+        font-size: 2.4rem;
+        line-height: 1.15;
+    }
+
+    .intro p {
+        font-size: 1rem;
+        margin-top: 18px;
+    }
+
+    /* Roadmap */
+    .roadmap {
+        padding: 60px 20px 80px;
+        margin: -12vh auto 0;
+    }
+
+    /* Remove the tree */
+    .timeline {
+        display: none;
+    }
+
+    /* Stage */
+    .stage-marker {
+        margin: 0 auto;
+        padding: 12px 20px;
+        text-align: center;
+    }
+
+    .stage-number {
+        font-size: 1rem;
+    }
+
+    .stage-marker h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Learning items */
+    .learning-item,
+    .learning-item.left,
+    .learning-item.right {
+        width: 100%;
+        margin: 55px auto;
+        justify-content: center;
+    }
+
+    /* Remove branch lines */
+    .learning-item::after {
+        display: none;
+    }
+
+    /* Images */
+    .image {
+        width: 85px;
+        height: 85px;
+        border-radius: 3px;
+    }
+
+    .learning-info {
+        max-width: 280px;
+        padding: 0 12px;
+        text-align: left;
+    }
+
+    .learning-info a {
+        font-size: 0.95rem;
+    }
+
+    .learning-info p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    /* Project */
+    .project {
+        margin: 70px auto 0;
+        max-width: 90%;
+        text-align: center;
+        padding: 20px 25px;
+    }
+}
